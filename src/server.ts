@@ -1,11 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-
-
-// import * as goodController from "./controllers/goods";
-// import * as colorsController from "./controllers/colors";
 import serverless from 'serverless-http';
-import { getAll } from './services/phones';
+import { phonesRouter } from './routes/phones';
+import { getAll } from './controllers/phones';
 
 const router = express.Router();
 
@@ -13,12 +10,11 @@ const app = express();
 
 app.use(cors());
 
+app.use('/phones', phonesRouter);
+
 router.get('/phones', async (req, res) => {
-  const allPhones = await getAll();
-  res.json(allPhones);
-
+  await getAll(res);
 })
-
 
 router.get('/', (req, res) => {
     res.json({

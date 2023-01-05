@@ -8,3 +8,4 @@ export async function getAll() {
 
   return JSON.parse(data);
 }
+// test

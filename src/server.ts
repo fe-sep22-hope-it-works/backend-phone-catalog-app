@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import serverless from 'serverless-http';
+
 import { phonesRouter } from './routes/phones';
 import { getAll } from './controllers/phones';
 
@@ -18,7 +19,7 @@ router.get('/phones', async (req, res) => {
 
 router.get('/', (req, res) => {
     res.json({
-        'hello': '123',
+        'hello': 'test',
     })
 })
 

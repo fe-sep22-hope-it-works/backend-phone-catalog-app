@@ -2,24 +2,19 @@ import express from 'express';
 import cors from 'cors';
 import serverless from 'serverless-http';
 import { phonesRouter } from './routes/phones';
-import dotenv from 'dotenv';
 
-dotenv.config();
-
-// const { API_PATH } = process.env;
 const router = express.Router();
 const app = express();
+const API_PATH = '/.netlify/functions/server';
 
 app.use(cors());
-app.use('/.netlify/functions/server/phones', phonesRouter);
+app.use(`${API_PATH}/phones`, phonesRouter);
+app.use(API_PATH, router);
 
 router.get('/', (req, res) => {
   res.json({
-    'Hello': 'The test works, so what?',
+    'Hello': 'It seems to be working...',
   });
 });
 
-app.use('/.netlify/functions/server', router);
-
-// app.use(`${API_PATH}`, router);
 export const handler = serverless(app);

@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { Phone } from '../types/Phone';
 
-// type SortBy = 'newest' | 'alphabetically' | 'price_cheap' | 'price_expensive' | 'capacity';
+type SortBy = 'newest' | 'alphabetically' | 'price_cheap' | 'price_expensive' | 'capacity' | 'ram' | 'screen';
 
 export function sortByQuery(allPhones: Phone[], query: string): Phone[] {
   switch (query) {

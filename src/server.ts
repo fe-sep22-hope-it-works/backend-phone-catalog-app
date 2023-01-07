@@ -19,5 +19,7 @@ router.get('/', (req, res) => {
   });
 });
 
-app.use(`${API_PATH}`, router);
+app.use('/.netlify/functions/server', router);
+
+// app.use(`${API_PATH}`, router);
 export const handler = serverless(app);

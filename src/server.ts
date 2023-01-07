@@ -11,7 +11,6 @@ const router = express.Router();
 const app = express();
 
 app.use(cors());
-app.use(`${API_PATH}`, router);
 app.use(`${API_PATH}/phones`, phonesRouter);
 
 router.get('/', (req, res) => {
@@ -20,4 +19,5 @@ router.get('/', (req, res) => {
   });
 });
 
+app.use(`${API_PATH}`, router);
 export const handler = serverless(app);

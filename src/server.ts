@@ -6,12 +6,12 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const { API_PATH } = process.env;
+// const { API_PATH } = process.env;
 const router = express.Router();
 const app = express();
 
 app.use(cors());
-app.use(`${API_PATH}/phones`, phonesRouter);
+app.use('/.netlify/functions/server/phones', phonesRouter);
 
 router.get('/', (req, res) => {
   res.json({

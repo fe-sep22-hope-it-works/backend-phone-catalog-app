@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -8,4 +9,11 @@ export async function getAllPhones() {
   const parsedData = JSON.parse(data);
 
   return parsedData;
+}
+
+export async function getPhoneById(phoneId: any) {
+  const allPhones = await getAllPhones();
+  const foundPhone = allPhones.find((phone: any) => phone.id === phoneId);
+
+  return foundPhone || null;
 }

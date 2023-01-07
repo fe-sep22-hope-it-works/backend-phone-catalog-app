@@ -1,10 +1,15 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { getQueryInfo } from '../modules/getQueryInfo';
+import { getPhoneById } from '../services/phones';
 
-export async function getImageByQuery(req: Request) {
-  const { model, color, fileName } = getQueryInfo(req);
-  const filePath = path.resolve(`public/img/phones/${model}/${color}/`, fileName);
+export async function getImageByQuery(phoneId: string) {
+  const foundPhone = await getPhoneById(phoneId);
+
+  if (!foundPhone) {
+    return null;
+  }
+
+  const filePath = path.resolve(`public/${foundPhone.image}`);
   const image = await fs.readFile(filePath, 'base64');
 
   return image;

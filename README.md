@@ -47,7 +47,7 @@ Responds:
 • Array of images by ID as Base64 scheme  
 
 Exapmle:  
-https://hope-it-works.netlify.app/.netlify/functions/server/phones/phones/img/11 
+https://hope-it-works.netlify.app/.netlify/functions/server/phones/img/11 
 ```
 
 ### Get the phone list:  

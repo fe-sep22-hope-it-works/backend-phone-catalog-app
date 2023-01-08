@@ -1,16 +1,23 @@
 import fs from 'fs/promises';
-import path from 'path';
 import { getPhoneById } from '../services/phones';
+import { getPathByParams } from '../modules/getPathByParams';
 
-export async function getImageByQuery(phoneId: string) {
+export async function getImageByQuery(phoneId: string, img: string) {
   const foundPhone = await getPhoneById(phoneId);
 
   if (!foundPhone) {
     return null;
   }
 
-  const filePath = path.resolve(`public/${foundPhone.image}`);
-  const image = await fs.readFile(filePath, 'base64');
+  const filePath = getPathByParams(foundPhone.image, img);
+
+  let image;
+
+  try {
+    image = await fs.readFile(filePath, 'base64');
+  } catch {
+    return null;
+  }
 
   return image;
 }

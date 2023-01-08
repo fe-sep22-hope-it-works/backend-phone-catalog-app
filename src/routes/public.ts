@@ -3,4 +3,4 @@ import { getImageById } from '../controllers/public';
 
 export const publicRouter = express.Router();
 
-publicRouter.get('/:phoneId', getImageById);
+publicRouter.get('/:phoneId/:img', getImageById);

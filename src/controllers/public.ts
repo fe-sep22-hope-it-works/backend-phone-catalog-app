@@ -1,8 +1,8 @@
 import { getImageByQuery } from '../services/public';
 
 export async function getImageById(req: any, res: any) {
-  const { phoneId } = req.params;
-  const image = await getImageByQuery(phoneId);
+  const { phoneId, img } = req.params;
+  const image = await getImageByQuery(phoneId, img);
 
   if (!image) {
     res.sendStatus(404);

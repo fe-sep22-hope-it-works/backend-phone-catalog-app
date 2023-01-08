@@ -22,10 +22,10 @@ Responds:
 • Extended phone object including description  
 
 Exapmle:  
-https://hope-it-works.netlify.app/.netlify/functions/server/phones/all/69  
+https://hope-it-works.netlify.app/.netlify/functions/server/phones/ext/69  
 ```
 
-### Get an image by ID:  
+### Get one image:  
 ```
 Requires:  
 • phoneID  

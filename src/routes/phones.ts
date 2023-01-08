@@ -9,6 +9,6 @@ import {
 export const phonesRouter = express.Router();
 
 phonesRouter.get('/img/:phoneId', getPhoneImages);
-phonesRouter.get('/all/:phoneId', getAllData);
+phonesRouter.get('/ext/:phoneId', getAllData);
 phonesRouter.get('/:phoneId', getOne);
 phonesRouter.get('/', getAll);

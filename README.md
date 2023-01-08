@@ -2,21 +2,7 @@
 
 ## API work description:  
 
-
-### Find an image:  
-```
-Requires:  
-• phoneID  
-• Two-digit number of image  
-
-Responds:  
-• Image in Base64 scheme  
-
-Exapmle:  
-https://hope-it-works.netlify.app/.netlify/functions/server/public/34/02  
-```
-
-### Find one phone:  
+### Find one phone by ID:  
 ```
 Requires:  
 • phoneID  
@@ -25,7 +11,43 @@ Responds:
 • Phone object  
 
 Exapmle:  
-https://hope-it-works.netlify.app/.netlify/functions/server/phones/34  
+https://hope-it-works.netlify.app/.netlify/functions/server/phones/14  
+```
+### Find extended data by ID:  
+```
+Requires:  
+• phoneID  
+
+Responds:  
+• Extended phone object including description  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/server/phones/all/69  
+```
+
+### Get an image by ID:  
+```
+Requires:  
+• phoneID  
+• Two-digit number of image  
+
+Responds:  
+• Image as Base64 scheme  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/server/public/36/02  
+```
+
+### Get all images by ID:  
+```
+Requires:  
+• phoneID  
+
+Responds:  
+• Array of images by ID as Base64 scheme  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/server/phones/phones/img/11 
 ```
 
 ### Get the phone list:  
@@ -38,7 +60,6 @@ sortBy = 'newest' | 'alphabetically' | 'price_cheap' | 'price_expensive' | 'capa
 
 Responds:  
 • Object as:  
-
   {
     paginatedPhones,  
     page,  
@@ -47,5 +68,5 @@ Responds:
   };  
 
 Exapmle:  
-https://hope-it-works.netlify.app/.netlify/functions/server/phones?sortedby=price_expensive&page=1&phonesQuantity=1  
+https://hope-it-works.netlify.app/.netlify/functions/server/phones?sortedby=price_expensive&page=3&phonesQuantity=4  
 ```

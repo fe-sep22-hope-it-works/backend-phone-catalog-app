@@ -1,6 +1,11 @@
 // eslint-disable-next-line no-shadow
 import { Response } from 'express-serve-static-core';
-import { getAllPhones, getPhoneById } from '../services/phones';
+import {
+  getAllPhones,
+  getPhoneById,
+  getPhoneImagesById,
+  getPhoneInfoById,
+} from '../services/phones';
 import { getQueryInfo } from '../modules/getQueryInfo';
 import { sortByQuery } from '../modules/sortByQuery';
 import { paginatePhones } from '../modules/paginatePhones';
@@ -36,7 +41,6 @@ export const getAll = async(req: {
 
 export const getOne = async(req: any, res: any) => {
   const { phoneId } = req.params;
-
   const foundPhone = await getPhoneById(phoneId);
 
   if (!foundPhone) {
@@ -47,4 +51,34 @@ export const getOne = async(req: any, res: any) => {
 
   res.statusCode = 200;
   res.send(foundPhone);
+};
+
+export const getPhoneImages = async(req: any, res: any) => {
+  const { phoneId } = req.params;
+
+  const foundImages = await getPhoneImagesById(phoneId);
+
+  if (!foundImages) {
+    res.sendStatus(404);
+
+    return;
+  }
+
+  res.statusCode = 200;
+  res.send(foundImages);
+};
+
+export const getAllData = async(req: any, res: any) => {
+  const { phoneId } = req.params;
+
+  const phoneInfo = await getPhoneInfoById(phoneId);
+
+  if (!phoneInfo) {
+    res.sendStatus(404);
+
+    return;
+  }
+
+  res.statusCode = 200;
+  res.send(phoneInfo);
 };

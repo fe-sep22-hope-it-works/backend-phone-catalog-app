@@ -1,4 +1,4 @@
-# backend-phone-catalog-app  
+# Backend phone catalog app  
 
 ## API work description:  
 
@@ -6,24 +6,30 @@
 *Requires:*  
 **Phone ID**  
 **Two-digit number of image**  
+
 *Responds:*  
 **Image in Base64 scheme**  
+
 *Exapmle:*  
 - [Git image](https://hope-it-works.netlify.app/.netlify/functions/server/public/34/02)  
 
 ### Find one phone:  
 *Requires:*  
 **phoneID**  
+
 *Responds:*  
 **Phone object**  
+
+*Exapmle:*  
 - [Get phone](https://hope-it-works.netlify.app/.netlify/functions/server/phones/34)  
 
 ### Get the phone list:  
 *Requires:*  
 **sortedBy parameter**  
-SortBy = 'newest' | 'alphabetically' | 'price_cheap' | 'price_expensive' | 'capacity' | 'ram' | 'screen'  
+sortBy = 'newest' | 'alphabetically' | 'price_cheap' | 'price_expensive' | 'capacity' | 'ram' | 'screen'  
 **Number of page**  
-**number of phones per page**  
+**Number of phones per page**  
+
 *Responds:*  
 **Object as:**  
 {  
@@ -32,6 +38,7 @@ SortBy = 'newest' | 'alphabetically' | 'price_cheap' | 'price_expensive' | 'capa
   totalPages,  
   totalPhones,  
 };  
+
 *Exapmle:*  
 - [Get phones list](https://hope-it-works.netlify.app/.netlify/functions/server/phones?sortedby=price_expensive&page=1&phonesQuantity=1)  
 

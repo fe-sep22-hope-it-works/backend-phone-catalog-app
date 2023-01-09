@@ -57,7 +57,7 @@ export async function sendImageByPath(req: any, res: any) {
 
   // res.send(filePath);
 
-  fs.readFile(filePath, (error, data) => {
+  await fs.readFile(filePath, (error, data) => {
     if (!error) {
       res.writeHead(200, { 'Content-Type': 'image/jpg' });
       res.end(data);

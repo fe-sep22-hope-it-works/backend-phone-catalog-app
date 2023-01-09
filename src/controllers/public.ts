@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { getImageByQuery } from '../services/public';
 import { getPhoneInfoById } from '../services/phones';
 

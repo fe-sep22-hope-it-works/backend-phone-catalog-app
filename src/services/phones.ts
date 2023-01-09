@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import fs from 'fs/promises';
 import path from 'path';
 import { Phone } from 'src/types/Phone';
@@ -63,7 +62,9 @@ export async function getRecommendedPhones(phoneId: string) {
   }
 
   const foundPrice = foundPhone.price;
-  const phonesWithSamePrice = getPhonesWithSamePrice(foundPrice, phoneId, allPhones);
+  const phonesWithSamePrice = getPhonesWithSamePrice(
+    foundPrice, phoneId, allPhones,
+  );
 
   return phonesWithSamePrice;
 }
@@ -73,7 +74,8 @@ export async function getNewestPhones() {
   const years = allPhones.map((phone: Phone) => phone.year);
   const maxYear = Math.max(...years);
 
-  const newestPhones = allPhones.filter((phone: Phone) => (phone.year === maxYear));
+  const newestPhones = allPhones
+    .filter((phone: Phone) => (phone.year === maxYear));
 
   return newestPhones;
 }
@@ -82,7 +84,8 @@ export async function getBestDiscountPhones() {
   const allPhones = await getAllPhones();
   const bestDiscount = getBestDiscount(allPhones);
 
-  const bestDiscountPhones = allPhones.filter((phone: Phone) => (phone.fullPrice - phone.price === bestDiscount));
+  const bestDiscountPhones = allPhones
+    .filter((phone: Phone) => (phone.fullPrice - phone.price === bestDiscount));
 
   return bestDiscountPhones;
 }

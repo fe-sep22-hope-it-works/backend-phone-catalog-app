@@ -1,6 +1,7 @@
 import express from 'express';
-import { getImageById } from '../controllers/public';
+import { getImageById, sendImageByPath } from '../controllers/public';
 
 export const publicRouter = express.Router();
 
 publicRouter.get('/:phoneId/:img', getImageById);
+publicRouter.get('/img/phones/:namespaceId/:color/:pic', sendImageByPath);

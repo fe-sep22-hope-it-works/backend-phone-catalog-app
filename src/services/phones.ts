@@ -1,6 +1,7 @@
+/* eslint-disable max-len */
 import fs from 'fs/promises';
 import path from 'path';
-import http from 'http';
+import { Phone } from 'src/types/Phone';
 
 export async function getAllPhones() {
   const filePath = path.resolve('public/api', 'phones.json');
@@ -31,7 +32,7 @@ export async function getPhoneInfoById(phoneId: any) {
   return JSON.parse(phoneInfo) || null;
 }
 
-export async function getPhoneImagesById(phoneId: any) {
+export async function getPhoneImagesById(phoneId: string) {
   const phoneInfo = await getPhoneInfoById(phoneId);
 
   if (!phoneInfo) {
@@ -49,4 +50,27 @@ export async function getPhoneImagesById(phoneId: any) {
   const results = Promise.all(phoneImages);
 
   return results;
+}
+
+export async function getPhonesWithSamePrice(price: number, phoneId: string) {
+  const allPhones = await getAllPhones();
+  const phonesWithSamePrice = allPhones.filter((phone: Phone) => (
+    phone.price === price
+      && +phone.id !== +phoneId
+  ));
+
+  return phonesWithSamePrice;
+}
+
+export async function getRecommendedPhones(phoneId: string) {
+  const foundPhone = await getPhoneById(phoneId);
+
+  if (!foundPhone) {
+    return null;
+  }
+
+  const foundPrice = foundPhone.price;
+  const phonesWithSamePrice = getPhonesWithSamePrice(foundPrice, phoneId);
+
+  return phonesWithSamePrice;
 }

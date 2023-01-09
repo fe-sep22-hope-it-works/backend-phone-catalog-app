@@ -5,6 +5,7 @@ import {
   getPhoneById,
   getPhoneImagesById,
   getPhoneInfoById,
+  getRecommendedPhones,
 } from '../services/phones';
 import { getQueryInfo } from '../modules/getQueryInfo';
 import { sortByQuery } from '../modules/sortByQuery';
@@ -81,4 +82,18 @@ export const getAllData = async(req: any, res: any) => {
 
   res.statusCode = 200;
   res.send(phoneInfo);
+};
+
+export const getRecommendedById = async(req: any, res: any) => {
+  const { phoneId } = req.params;
+  const foundRecommendedPhones = await getRecommendedPhones(phoneId);
+
+  if (!foundRecommendedPhones) {
+    res.sendStatus(404);
+
+    return;
+  }
+
+  res.statusCode = 200;
+  res.send(foundRecommendedPhones);
 };

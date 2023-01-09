@@ -1,5 +1,8 @@
 import express from 'express';
-import { getImageById, sendAllImgPathsById } from '../controllers/public';
+import {
+  getImageById,
+  sendAllImgPathsById,
+} from '../controllers/public';
 
 export const publicRouter = express.Router();
 

@@ -82,3 +82,15 @@ Responds:
 Exapmle:  
 https://hope-it-works.netlify.app/.netlify/functions/server/public/img/14 
 ```
+
+### Get recommended phone by ID:  
+```
+Requires:  
+• phoneID  
+
+Responds:  
+• Array of recommended phones with the same price  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/phones/recommended/63
+```

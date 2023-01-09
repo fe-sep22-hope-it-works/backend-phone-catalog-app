@@ -25,7 +25,7 @@ Exapmle:
 https://hope-it-works.netlify.app/.netlify/functions/server/phones/ext/69  
 ```
 
-### Get one image:  
+### Get one image as Base64 scheme:  
 ```
 Requires:  
 • phoneID  
@@ -38,7 +38,7 @@ Exapmle:
 https://hope-it-works.netlify.app/.netlify/functions/server/public/36/02  
 ```
 
-### Get all images by ID:  
+### Get all images by ID as Base64 scheme:  
 ```
 Requires:  
 • phoneID  
@@ -69,4 +69,16 @@ Responds:
 
 Exapmle:  
 https://hope-it-works.netlify.app/.netlify/functions/server/phones?sortedby=price_expensive&page=3&phonesQuantity=4  
+```
+
+### Get images paths by ID:  
+```
+Requires:  
+• phoneID  
+
+Responds:  
+• Array of paths to images  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/server/public/img/14 
 ```

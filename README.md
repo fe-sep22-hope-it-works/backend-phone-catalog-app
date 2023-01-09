@@ -104,3 +104,12 @@ Responds:
 Exapmle:  
 https://hope-it-works.netlify.app/.netlify/functions/server/phones/new
 ```
+
+### Get phones with best discount:  
+```
+Responds:  
+• Array of phones with biggest discount  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/server/phones/discount
+```

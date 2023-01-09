@@ -2,6 +2,8 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { Phone } from 'src/types/Phone';
+import { getPhonesWithSamePrice } from '../modules/getPhonesWithSamePrice';
+import { getBestDiscount } from '../modules/getBestDiscount';
 
 export async function getAllPhones() {
   const filePath = path.resolve('public/api', 'phones.json');
@@ -52,17 +54,8 @@ export async function getPhoneImagesById(phoneId: string) {
   return results;
 }
 
-export async function getPhonesWithSamePrice(price: number, phoneId: string) {
-  const allPhones = await getAllPhones();
-  const phonesWithSamePrice = allPhones.filter((phone: Phone) => (
-    phone.price === price
-      && +phone.id !== +phoneId
-  ));
-
-  return phonesWithSamePrice;
-}
-
 export async function getRecommendedPhones(phoneId: string) {
+  const allPhones = await getAllPhones();
   const foundPhone = await getPhoneById(phoneId);
 
   if (!foundPhone) {
@@ -70,7 +63,7 @@ export async function getRecommendedPhones(phoneId: string) {
   }
 
   const foundPrice = foundPhone.price;
-  const phonesWithSamePrice = getPhonesWithSamePrice(foundPrice, phoneId);
+  const phonesWithSamePrice = getPhonesWithSamePrice(foundPrice, phoneId, allPhones);
 
   return phonesWithSamePrice;
 }
@@ -83,4 +76,13 @@ export async function getNewestPhones() {
   const newestPhones = allPhones.filter((phone: Phone) => (phone.year === maxYear));
 
   return newestPhones;
+}
+
+export async function getBestDiscountPhones() {
+  const allPhones = await getAllPhones();
+  const bestDiscount = getBestDiscount(allPhones);
+
+  const bestDiscountPhones = allPhones.filter((phone: Phone) => (phone.fullPrice - phone.price === bestDiscount));
+
+  return bestDiscountPhones;
 }

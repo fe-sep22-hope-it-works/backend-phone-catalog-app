@@ -7,6 +7,7 @@ import {
   getPhoneInfoById,
   getRecommendedPhones,
   getNewestPhones,
+  getBestDiscountPhones,
 } from '../services/phones';
 import { getQueryInfo } from '../modules/getQueryInfo';
 import { sortByQuery } from '../modules/sortByQuery';
@@ -103,4 +104,10 @@ export const getNewPhones = async(req: any, res: any) => {
   const newestPhones = await getNewestPhones();
 
   res.send(newestPhones);
+};
+
+export const getPhonesWithDiscount = async(req: any, res: any) => {
+  const phonesWithDiscount = await getBestDiscountPhones();
+
+  res.send(phonesWithDiscount);
 };

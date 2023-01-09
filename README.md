@@ -92,5 +92,5 @@ Responds:
 • Array of recommended phones with the same price  
 
 Exapmle:  
-https://hope-it-works.netlify.app/.netlify/functions/phones/recommended/63
+https://hope-it-works.netlify.app/.netlify/functions/server/phones/recommended/63
 ```

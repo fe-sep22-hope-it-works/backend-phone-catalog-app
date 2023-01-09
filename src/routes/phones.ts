@@ -5,10 +5,12 @@ import {
   getPhoneImages,
   getAllData,
   getRecommendedById,
+  getNewPhones,
 } from '../controllers/phones';
 
 export const phonesRouter = express.Router();
 
+phonesRouter.get('/new', getNewPhones);
 phonesRouter.get('/recommended/:phoneId', getRecommendedById);
 phonesRouter.get('/img/:phoneId', getPhoneImages);
 phonesRouter.get('/ext/:phoneId', getAllData);

@@ -74,3 +74,13 @@ export async function getRecommendedPhones(phoneId: string) {
 
   return phonesWithSamePrice;
 }
+
+export async function getNewestPhones() {
+  const allPhones = await getAllPhones();
+  const years = allPhones.map((phone: Phone) => phone.year);
+  const maxYear = Math.max(...years);
+
+  const newestPhones = allPhones.filter((phone: Phone) => (phone.year === maxYear));
+
+  return newestPhones;
+}

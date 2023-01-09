@@ -13,6 +13,7 @@ Responds:
 Exapmle:  
 https://hope-it-works.netlify.app/.netlify/functions/server/phones/14  
 ```
+
 ### Find extended data by ID:  
 ```
 Requires:  
@@ -93,4 +94,13 @@ Responds:
 
 Exapmle:  
 https://hope-it-works.netlify.app/.netlify/functions/server/phones/recommended/63
+```
+
+### Get new phones:  
+```
+Responds:  
+• Array new phones  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/server/phones/new
 ```

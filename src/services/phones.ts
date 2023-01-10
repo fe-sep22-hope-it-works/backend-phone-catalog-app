@@ -85,7 +85,9 @@ export async function getBestDiscountPhones() {
   const bestDiscount = getBestDiscount(allPhones);
 
   const bestDiscountPhones = allPhones
-    .filter((phone: Phone) => (phone.fullPrice - phone.price === bestDiscount));
+    .filter((phone: Phone) => (
+      phone.fullPrice - phone.price >= bestDiscount * 0.9
+    ));
 
   return bestDiscountPhones;
 }

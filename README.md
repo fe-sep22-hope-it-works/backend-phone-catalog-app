@@ -113,3 +113,16 @@ Responds:
 Exapmle:  
 https://hope-it-works.netlify.app/.netlify/functions/server/phones/discount
 ```
+
+### Get productType by query:  
+```
+Requires:  
+• ProductType query  
+
+Responds:  
+• Array of ProductType products  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/server/tablets
+```
+

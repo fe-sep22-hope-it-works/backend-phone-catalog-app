@@ -1,9 +1,11 @@
+// eslint-disable-next-line no-shadow
+import { Response, Request } from 'express';
 import { getImageByQuery } from '../services/public';
 import { getPhoneInfoById } from '../services/phones';
 
-export async function getImageById(req: any, res: any) {
+export async function getImageById(req: Request, res: Response) {
   const { phoneId, img } = req.params;
-  const image = await getImageByQuery(phoneId, img);
+  const image = await getImageByQuery(Number(phoneId), img);
 
   if (!image) {
     res.sendStatus(404);
@@ -15,9 +17,9 @@ export async function getImageById(req: any, res: any) {
   res.send(image);
 }
 
-export async function sendAllImgPathsById(req: any, res: any) {
+export async function sendAllImgPathsById(req: Request, res: Response) {
   const { phoneId } = req.params;
-  const foundPhone = await getPhoneInfoById(phoneId);
+  const foundPhone = await getPhoneInfoById(Number(phoneId));
 
   if (!foundPhone) {
     res.sendStatus(404);

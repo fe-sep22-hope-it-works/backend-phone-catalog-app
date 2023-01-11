@@ -126,3 +126,35 @@ Exapmle:
 https://hope-it-works.netlify.app/.netlify/functions/server/tablets
 ```
 
+### Get all favorites:  
+```
+Responds:  
+• Array of favorite phones  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/server/favorites/getAll
+```
+
+### Add favorite by ID:  
+```
+Requires:  
+• phoneID  
+
+Responds:  
+• Array of favorite phones with added phone  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/server/favorites/addOne/31
+```
+
+### Delete favorite by ID:  
+```
+Requires:  
+• phoneID  
+
+Responds:  
+• Array of favorite phones without deleted phone  
+
+Exapmle:  
+https://hope-it-works.netlify.app/.netlify/functions/server/favorites/deleteOne/:phoneId
+```

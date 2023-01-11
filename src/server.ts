@@ -4,12 +4,14 @@ import serverless from 'serverless-http';
 import { phonesRouter } from './routes/phones';
 import { publicRouter } from './routes/public';
 import { productTypeRouter } from './routes/productType';
+import { favoritesRouter } from './routes/favorites';
 
 const router = express.Router();
 const app = express();
 const API_PATH = '/.netlify/functions/server';
 
 app.use(cors());
+app.use(`${API_PATH}/favorites`, favoritesRouter);
 app.use(`${API_PATH}/phones`, phonesRouter);
 app.use(`${API_PATH}/public`, publicRouter);
 app.use(API_PATH, router);

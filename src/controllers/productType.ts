@@ -1,8 +1,6 @@
-// eslint-disable-next-line no-shadow
-import { Request, Response } from 'express';
 import { findProductType } from '../services/productType';
 
-export const getProductType = (req: Request, res: Response) => {
+export const getProductType = (req: any, res: any) => {
   const { productType } = req.params;
   const foundProductType = findProductType(productType);
 

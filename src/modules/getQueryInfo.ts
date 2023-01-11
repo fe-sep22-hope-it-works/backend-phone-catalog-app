@@ -1,7 +1,6 @@
-// eslint-disable-next-line no-shadow
-import { Request } from 'express';
-
-export function getQueryInfo(req: Request) {
+export function getQueryInfo(req: {
+  headers: any; url: string;
+}) {
   const normalizedURL = new URL(req.url, `http://${req.headers.host}`);
 
   const params = Object.fromEntries(normalizedURL.searchParams.entries());

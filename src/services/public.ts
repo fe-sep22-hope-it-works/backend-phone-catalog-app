@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import { getPhoneById } from '../services/phones';
 import { getPathByParams } from '../modules/getPathByParams';
 
-export async function getImageByQuery(phoneId: number, img: string) {
+export async function getImageByQuery(phoneId: string, img: string) {
   const foundPhone = await getPhoneById(phoneId);
 
   if (!foundPhone) {

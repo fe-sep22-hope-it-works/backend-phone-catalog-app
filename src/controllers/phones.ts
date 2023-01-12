@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-shadow
-import { Response } from 'express-serve-static-core';
+import { Response, Request } from 'express-serve-static-core';
 import {
   getAllPhones,
   getPhoneById,
@@ -13,10 +13,7 @@ import { getQueryInfo } from '../modules/getQueryInfo';
 import { sortByQuery } from '../modules/sortByQuery';
 import { paginatePhones } from '../modules/paginatePhones';
 
-export const getAll = async(req: {
-  // headers: 'application/json; charset=utf-8'; url: string;
-  headers: any; url: string;
-}, res: Response) => {
+export const getAll = async(req: Request, res: Response) => {
   const allPhones = await getAllPhones();
   const totalPhones = Object.keys(allPhones).length;
   const { sortedby, page, phonesQuantity } = getQueryInfo(req);
@@ -42,7 +39,7 @@ export const getAll = async(req: {
   res.json(responsePhones);
 };
 
-export const getOne = async(req: any, res: any) => {
+export const getOne = async(req: Request, res: Response) => {
   const { phoneId } = req.params;
   const foundPhone = await getPhoneById(phoneId);
 
@@ -56,7 +53,7 @@ export const getOne = async(req: any, res: any) => {
   res.send(foundPhone);
 };
 
-export const getPhoneImages = async(req: any, res: any) => {
+export const getPhoneImages = async(req: Request, res: Response) => {
   const { phoneId } = req.params;
 
   const foundImages = await getPhoneImagesById(phoneId);
@@ -71,7 +68,7 @@ export const getPhoneImages = async(req: any, res: any) => {
   res.send(foundImages);
 };
 
-export const getAllData = async(req: any, res: any) => {
+export const getAllData = async(req: Request, res: Response) => {
   const { phoneId } = req.params;
 
   const phoneInfo = await getPhoneInfoById(phoneId);
@@ -86,7 +83,7 @@ export const getAllData = async(req: any, res: any) => {
   res.send(phoneInfo);
 };
 
-export const getRecommendedById = async(req: any, res: any) => {
+export const getRecommendedById = async(req: Request, res: Response) => {
   const { phoneId } = req.params;
   const foundRecommendedPhones = await getRecommendedPhones(phoneId);
 
@@ -100,13 +97,13 @@ export const getRecommendedById = async(req: any, res: any) => {
   res.send(foundRecommendedPhones);
 };
 
-export const getNewPhones = async(req: any, res: any) => {
+export const getNewPhones = async(req: Request, res: Response) => {
   const newestPhones = await getNewestPhones();
 
   res.send(newestPhones);
 };
 
-export const getPhonesWithDiscount = async(req: any, res: any) => {
+export const getPhonesWithDiscount = async(req: Request, res: Response) => {
   const phonesWithDiscount = await getBestDiscountPhones();
 
   res.send(phonesWithDiscount);

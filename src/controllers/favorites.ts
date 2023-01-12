@@ -1,10 +1,12 @@
+/* eslint-disable no-shadow */
 import {
   getAllFavs,
   addOne,
   deleteOne,
 } from '../services/favorites';
+import { Request, Response } from 'express';
 
-export const getAllFavorites = async(req: any, res: any) => {
+export const getAllFavorites = async(req: Request, res: Response) => {
   const allFavorites = await getAllFavs();
 
   if (!allFavorites) {
@@ -17,7 +19,7 @@ export const getAllFavorites = async(req: any, res: any) => {
   res.json(allFavorites);
 };
 
-export const addFavorite = async(req: any, res: any) => {
+export const addFavorite = async(req: Request, res: Response) => {
   const { phoneId } = req.params;
   const allFavorites = await addOne(phoneId);
 
@@ -31,7 +33,7 @@ export const addFavorite = async(req: any, res: any) => {
   res.json(allFavorites);
 };
 
-export const deleteFavorite = async(req: any, res: any) => {
+export const deleteFavorite = async(req: Request, res: Response) => {
   const { phoneId } = req.params;
   const allFavorites = await deleteOne(phoneId);
 

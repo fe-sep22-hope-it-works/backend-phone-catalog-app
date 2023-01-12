@@ -5,6 +5,7 @@ import { phonesRouter } from './routes/phones';
 import { publicRouter } from './routes/public';
 import { productTypeRouter } from './routes/productType';
 import { favoritesRouter } from './routes/favorites';
+import { mainRouter } from './routes/main';
 
 const router = express.Router();
 const app = express();
@@ -16,11 +17,6 @@ app.use(`${API_PATH}/phones`, phonesRouter);
 app.use(`${API_PATH}/public`, publicRouter);
 app.use(API_PATH, router);
 app.use(`${API_PATH}/`, productTypeRouter);
-
-router.get('/', (req, res) => {
-  res.json({
-    'Hello': 'Please, delete this one day.',
-  });
-});
+app.use(`${API_PATH}/`, mainRouter);
 
 export const handler = serverless(app);

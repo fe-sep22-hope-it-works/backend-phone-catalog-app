@@ -11,7 +11,7 @@ export async function getAllFavs() {
   return parsedData;
 }
 
-export async function addOne(phoneId: any) {
+export async function addOne(phoneId: string) {
   const allFavs = await getAllFavs();
   const foundPhone = await getPhoneById(phoneId);
   const allIds = allFavs.map((favorite: Phone) => favorite.id);
@@ -35,7 +35,7 @@ export async function addOne(phoneId: any) {
   return newFavs;
 }
 
-export async function deleteOne(phoneId: any) {
+export async function deleteOne(phoneId: string) {
   const allFavs = await getAllFavs();
   const foundPhone = await getPhoneById(phoneId);
   const allIds = allFavs.map((favorite: Phone) => favorite.id);
@@ -49,7 +49,7 @@ export async function deleteOne(phoneId: any) {
   }
 
   const editedFavs = allFavs
-    .filter((favorite: Phone) => favorite.id !== phoneId);
+    .filter((favorite: Phone) => +favorite.id !== +phoneId);
   const string = JSON.stringify(editedFavs);
   const filePath = path.resolve('public/api', 'favorites.json');
 

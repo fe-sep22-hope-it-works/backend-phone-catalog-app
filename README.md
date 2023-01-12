@@ -156,5 +156,5 @@ Responds:
 • Array of favorite phones without deleted phone  
 
 Exapmle:  
-https://hope-it-works.netlify.app/.netlify/functions/server/favorites/deleteOne/:phoneId
+https://hope-it-works.netlify.app/.netlify/functions/server/favorites/deleteOne/38
 ```

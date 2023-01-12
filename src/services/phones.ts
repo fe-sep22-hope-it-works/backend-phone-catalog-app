@@ -12,14 +12,14 @@ export async function getAllPhones() {
   return parsedData;
 }
 
-export async function getPhoneById(phoneId: any) {
+export async function getPhoneById(phoneId: string) {
   const allPhones = await getAllPhones();
-  const foundPhone = allPhones.find((phone: any) => phone.id === phoneId);
+  const foundPhone = allPhones.find((phone: Phone) => phone.id === +phoneId);
 
   return foundPhone || null;
 }
 
-export async function getPhoneInfoById(phoneId: any) {
+export async function getPhoneInfoById(phoneId: string) {
   const foundPhone = await getPhoneById(phoneId);
 
   if (!foundPhone) {
@@ -41,12 +41,13 @@ export async function getPhoneImagesById(phoneId: string) {
   }
 
   const imagesPath = phoneInfo.images;
-  const phoneImages = imagesPath.reduce((accumulator: any, element: any) => {
-    const filePath = path.resolve('public/', element);
-    const image = fs.readFile(filePath, 'base64');
+  const phoneImages = imagesPath
+    .reduce((accumulator: string[], element: string) => {
+      const filePath = path.resolve('public/', element);
+      const image = fs.readFile(filePath, 'base64');
 
-    return [...accumulator, image];
-  }, []);
+      return [...accumulator, image];
+    }, []);
 
   const results = Promise.all(phoneImages);
 

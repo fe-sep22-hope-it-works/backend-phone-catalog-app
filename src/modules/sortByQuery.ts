@@ -3,7 +3,9 @@ import { Phone } from '../types/Phone';
 export function sortByQuery(allPhones: Phone[], query: string): Phone[] {
   switch (query) {
   case 'newest':
-    return allPhones.sort((a: Phone, b: Phone) => b.year - a.year);
+    return allPhones
+      .sort((a: Phone, b: Phone) => b.year - a.year)
+      .sort((a: Phone, b: Phone) => b.price - a.price);
 
   case 'alphabetically':
     return allPhones

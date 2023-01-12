@@ -1,31 +1,32 @@
 import { Phone } from '../types/Phone';
+import { SortBy } from '../types/SortBy';
 
-export function sortByQuery(allPhones: Phone[], query: string): Phone[] {
+export function sortByQuery(allPhones: Phone[], query: SortBy): Phone[] {
   switch (query) {
-  case 'newest':
+  case SortBy.newest:
     return allPhones.sort((a: Phone, b: Phone) => b.year - a.year);
 
-  case 'alphabetically':
+  case SortBy.alphabetically:
     return allPhones
       .sort((a: Phone, b: Phone) => a.name.localeCompare(b.name));
 
-  case 'price_cheap':
+  case SortBy.price_cheap:
     return allPhones.sort((a: Phone, b: Phone) => a.price - b.price);
 
-  case 'price_expensive':
+  case SortBy.price_expensive:
     return allPhones.sort((a: Phone, b: Phone) => b.price - a.price);
 
-  case 'capacity':
+  case SortBy.capacity:
     return allPhones.sort(
       (a: Phone, b: Phone) => parseInt(b.capacity) - parseInt(a.capacity),
     );
 
-  case 'ram':
+  case SortBy.ram:
     return allPhones.sort(
       (a: Phone, b: Phone) => parseInt(b.ram) - parseInt(a.ram),
     );
 
-  case 'screen':
+  case SortBy.screen:
     return allPhones.sort(
       (a: Phone, b: Phone) => parseFloat(b.screen) - parseFloat(a.screen),
     );

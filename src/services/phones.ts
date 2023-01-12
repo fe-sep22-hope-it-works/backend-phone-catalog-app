@@ -75,7 +75,8 @@ export async function getNewestPhones() {
   const maxYear = Math.max(...years);
 
   const newestPhones = allPhones
-    .filter((phone: Phone) => (phone.year === maxYear));
+    .filter((phone: Phone) => (phone.year === maxYear))
+    .sort((a: Phone, b: Phone) => b.price - a.price);
 
   return newestPhones;
 }

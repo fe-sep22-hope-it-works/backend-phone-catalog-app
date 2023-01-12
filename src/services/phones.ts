@@ -42,7 +42,7 @@ export async function getPhoneImagesById(phoneId: string) {
 
   const imagesPath = phoneInfo.images;
   const phoneImages = imagesPath
-    .reduce((accumulator: string[], element: string) => {
+    .reduce((accumulator: any, element: any) => {
       const filePath = path.resolve('public/', element);
       const image = fs.readFile(filePath, 'base64');
 

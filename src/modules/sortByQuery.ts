@@ -4,7 +4,9 @@ import { SortBy } from '../types/SortBy';
 export function sortByQuery(allPhones: Phone[], query: SortBy): Phone[] {
   switch (query) {
   case SortBy.newest:
-    return allPhones.sort((a: Phone, b: Phone) => b.year - a.year);
+    return allPhones
+      .sort((a: Phone, b: Phone) => b.year - a.year)
+      .sort((a: Phone, b: Phone) => b.price - a.price);
 
   case SortBy.alphabetically:
     return allPhones
